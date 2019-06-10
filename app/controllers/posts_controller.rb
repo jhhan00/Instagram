@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   
   def update
     @post.content = params[:content]
+    @post.image = params[:image]
     
     if @post.save
       redirect_to root_path
@@ -39,7 +40,18 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
   
-  private
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @posts = tag.posts
+    @posts_count = current_user.posts.length
+  end
+  
+  def user
+    # @post = Post.find_by(user_id: params[:id])
+    @user_id = params[:id]
+    @posts = Post.all.order('created_at desc')
+    @posts_count = current_user.posts.length
+  end
   
   def check_ownership
     @post = Post.find_by(id: params[:id])

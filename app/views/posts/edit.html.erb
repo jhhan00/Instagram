@@ -8,12 +8,13 @@
                   <div class="input-field">
                     <%= file_field_tag :image %>
                   </div>
+                  
                   <div class="input-field">
                     <%= text_area_tag :content, @post.content, class: "materialize-textarea", placesholder: "무슨 생각을 하고 있나요?" %>
                   </div>
               
                   <div class="input-field">
-                    <%= button_tag "수정하기", class: "btn" %>
+                    <%= button_tag "수정하기", class: "btn red lighten-1" %>
                   </div>
               <% end %>
         </div>

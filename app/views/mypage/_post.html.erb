@@ -3,7 +3,7 @@
         <% if post.user.avatar %>
             <img class="circle thumbnail" src="<%= post.user.avatar.thumb.url %>">
         <% end %>
-        <span class="card-title"><strong><%= post.user.name %></strong></span>
+        <span class="card-title"><%= post.user.name %></span>
         <span class="right"><%= post.created_at %></span>
         <div class="content">
             <div class="card-image">

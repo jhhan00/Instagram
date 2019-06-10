@@ -2,7 +2,9 @@
     <div class="row">
         <div class="col s12 m9">
             <% @posts.each do |post| %>
-                <%= render partial: 'post', object: post %>
+                <% if @user_id == post.user_id %>
+                    <%= render partial: 'post', object: post %>
+                <% end %>
             <% end %>
         </div>
         <div class="col s12 m3">
@@ -15,22 +17,8 @@
                     <p>이메일 : <%= current_user.email %></p>
                     <p>올린 글 개수 : <%= @posts_count %></p>
                     <p>팔로워 : <%= current_user.followers.length %></p>
-                    <% current_user.followers.each do |f| %>
-                        <%= link_to "/posts/user/#{f.id}" do %>
-                            <button class="btn-small black-text teal lighten-4 waves-effect waves-light">
-                                <%= f.name %>
-                            </button>
-                        <% end %>
-                    <% end %>
                     <p>팔로잉 : <%= current_user.followings.length %></p>
-                    <% current_user.followings.each do |f| %>
-                        <%= link_to "/posts/user/#{f.id}" do %>
-                            <button class="btn-small black-text cyan lighten-4 waves-effect waves-light">
-                                <%= f.name %>
-                            </button>
-                        <% end %>
-                    <% end %>
-                    <br><br>
+                    
                     <%= link_to new_post_path do %>
                         <button class="btn red lighten-1">글 쓰기</button>
                     <% end %>

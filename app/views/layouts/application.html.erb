@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sns</title>
+    <title>Imstagram</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,22 +12,24 @@
 
   <body>
     <nav>
-      <div class="nav-wrapper indigo lighten">
-        <a href="/" class="brand-logo">SNS</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/posts">Posts</a></li>
-          <% if user_signed_in? %>
-            <li><%= current_user.name %></li>
-            <li><%= link_to '개인정보', edit_user_registration_path %></li>
-            <li><%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %></li>
-          <% else %>
-            <li><a href="/users/sign_in">로그인</a></li>
-            <li><a href="/users/sign_up">회원가입</a></li>
-          <% end %>
-        </ul>
-      </div>
+      <div class="nav-wrapper">
+        <div class="sticky">
+          <a href="/" class="brand-logo">Imstagram</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+            <% if user_signed_in? %>
+              <li>환영합니다, <strong><%= current_user.name %></strong>님</li>
+              <!--<li><a href="/mypage/index">My Page</a></li>-->
+              <li><%= link_to 'My Page', "/posts/user/#{current_user.id}" %></li>
+              <li><%= link_to '개인정보수정', edit_user_registration_path %></li>
+              <li><%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %></li>
+            <% else %>
+              <li><a href="/users/sign_in">로그인</a></li>
+              <li><a href="/users/sign_up">회원가입</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>  
     </nav>
-    
     <%= yield %>
   </body>
 </html>

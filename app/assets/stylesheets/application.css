@@ -14,3 +14,25 @@
  *= require_tree .
  *= require_self
  */
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 5;
+}
+
+.sticky-sidebar {
+  position: fixed;
+  width: 20%;
+}
+
+.circle{
+  width: 25px;
+  height: 25px;
+}
+
+.inline{
+    display: inline-block;
+  }
